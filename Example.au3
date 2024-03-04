@@ -17,24 +17,24 @@ GUICtrlSetTip(GUICtrlToggle_CtrlID($mVToggle), 'Click me multiple times')
 GUISetState()
 
 While True
-    Switch GUIGetMsg()
-        Case $mHToggle['ID']
-            ToggleState($mHToggle)
-            If GUICtrlToggle_State($mHToggle) Then
-                GUICtrlToggle_SetTheme($mHToggle, $mAdminOn)
-            Else
-                GUICtrlToggle_SetTheme($mHToggle, $mAdminOff)
-            EndIf
-        Case $mVToggle['ID']
-            ToggleState($mVToggle)
-            $iSwitchSize = GUICtrlToggle_SwitchSize($mVToggle)
-            $iSwitchSize += 1
-            If $iSwitchSize > 10 Then $iSwitchSize = 3
-            GUICtrlToggle_SwitchSize($mVToggle, $iSwitchSize)
-            GUICtrlToggle_SwitchColor($mVToggle, 0xFF000000 + Random(0, 0xFFFFFF, 1))
-        Case $GUI_EVENT_CLOSE
-            ExitLoop
-    EndSwitch
+  Switch GUIGetMsg()
+    Case $mHToggle['ID']
+      ToggleState($mHToggle)
+      If GUICtrlToggle_State($mHToggle) Then
+        GUICtrlToggle_SetTheme($mHToggle, $mAdminOn)
+      Else
+        GUICtrlToggle_SetTheme($mHToggle, $mAdminOff)
+      EndIf
+    Case $mVToggle['ID']
+      ToggleState($mVToggle)
+      $iSwitchSize = GUICtrlToggle_SwitchSize($mVToggle)
+      $iSwitchSize += 1
+      If $iSwitchSize > 10 Then $iSwitchSize = 3
+      GUICtrlToggle_SwitchSize($mVToggle, $iSwitchSize)
+      GUICtrlToggle_SwitchColor($mVToggle, 0xFF000000 + Random(0, 0xFFFFFF, 1))
+    Case $GUI_EVENT_CLOSE
+      ExitLoop
+  EndSwitch
 WEnd
 
 GUICtrlDeleteToggle($mVToggle)
