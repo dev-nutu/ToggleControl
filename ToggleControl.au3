@@ -424,7 +424,7 @@ EndFunc
 ; #INTERNAL_USE_ONLY# ========================================================================================================================================================================================
 ; This function is for internal use only and it's used to draw the control. Don't call this function unless you understand how it works!!!
 ; ============================================================================================================================================================================================================
-Func __DrawToggle(ByRef $mToggleCtrl, $fAnimate = False)
+Func __DrawToggle(ByRef $mToggleCtrl, $bAnimate = False)
   Local $hHBITMAP, $iStart, $iStop, $iStep, $hDC, $iOffsetX, $iOffsetY, $iStepAmp = 1
   Local Const $STM_SETIMAGE = 0x0172, $IMAGE_BITMAP = 0, $GDIP_SmoothingMode_HighQuality = 2, $ANIMATION_UNIT = 150
   Local $iSwitchSizePercent = ($mToggleCtrl['Style'] = $TOGGLE_HORIZONTAL ? $mToggleCtrl['Height'] / $mToggleCtrl['SwitchSize'] : $mToggleCtrl['Width']  / $mToggleCtrl['SwitchSize'])
@@ -450,7 +450,7 @@ Func __DrawToggle(ByRef $mToggleCtrl, $fAnimate = False)
   _GDIPlus_PathAddArc($hPath, 0, $mToggleCtrl['Height'] - $iDiameter - 1, $iDiameter, $iDiameter, 90, 90)
   _GDIPlus_PathCloseFigure($hPath)
   Local $iDelta = Abs($mToggleCtrl['Width'] - $mToggleCtrl['Height'])
-  If $fAnimate Then
+  If $bAnimate Then
     $iStart = $mToggleCtrl['State'] ? 0 : $iDelta
     $iStop = $mToggleCtrl['State'] ? $iDelta : 0
     $iStepAmp = Int(($mToggleCtrl['Style'] = $TOGGLE_HORIZONTAL ? $mToggleCtrl['Width'] :  $mToggleCtrl['Height']) / $ANIMATION_UNIT)
